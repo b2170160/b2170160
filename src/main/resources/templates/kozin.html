@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/side-menu.css}" href="../static/css/side-menu.css">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="entry-content">
+    <div class="wrap">
+        <header id="header" class="header">
+            <h2>[[${laboname}]]</h2>
+
+
+        </header><!-- /header -->
+        <div class="container">
+            <main class="main">
+                <!-- メインコンテンツ -->
+
+                <h1>[[${students}]]</h1>
+
+
+                <div class="box">
+                    <img src="../static/images/prof/syatyou.png" th:src="@{/images/prof/syatyou.png}" alt="教授">
+                </div>
+                <div class="rogo">
+                    <p style="text-align: center;">詳細</p>
+                    <p>[[${syousai}]]</p>
+                </div>
+                <div><h3>研究室の学生の声</h3></div>
+
+                <div class="example">
+
+                    <p>[[${koe}]]</p>
+
+                </div>
+
+            </main>
+            <div class="sidebar">
+                <div class="sidebar__item">
+                    <!-- 中身 -->
+                    <h2>メニュー</h2>
+                    <li><a href="/">ホーム</a></li>
+                    <li><a href="/SignIn">ログイン/投稿,編集</a></li>
+                    <li><a th:href="@{/{sensei}(sensei=${laboId})}">生徒一覧に戻る</a></li>
+
+
+
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <h2>コメント</h2>
+            <form action='yasusi' th:action="@{id(id=${studentId})}" method='post'>
+                <textarea name='text' placeholder='コメントを入力して下さい' cols='40' rows='5'></textarea>
+                <button type='submit'>投稿する</button>
+            </form>
+            <p>[[${message}]]</p>
+            <p>[[${postedAt}]]</p>
+
+            <ul th:each="qwerty, ri:${retrospectives}">
+                <div class="accbox">
+
+                    <p>
+                        <pre style="background:azure">
+                    <p th:text="${ri.count} +' '+ ${qwerty.text}"></p></pre>
+                    ---[[${qwerty.postedAt}]]
+                    </li>
+
+
+                    <label th:for="${ri.index}">返信</label>
+
+                    <input type="checkbox" th:id="${ri.index}" class="cssacc"/>
+                    <div class="accshow">
+                        <!--ここに隠す中身-->
+                        <p>
+
+                        <form action='yasusi' method='post'>
+                            <textarea name='text' cols='40' rows='5' th:text="'>>' + ${ri.count}"></textarea>
+                            <button type='submit'>返信する</button>
+                        </form>
+
+                        </p>
+                    </div>
+                </div>
+
+
+            </ul>
+        </footer>
+    </div>
+</div>
+</body>
+</html>

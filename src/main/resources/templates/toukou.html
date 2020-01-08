@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<form action='kanryou'  method='post'>
+    <p>詳細</p>
+    <input name='syousai' th:text="${syousai}" cols='40' rows='5'/>
+    <p>学生の声</p>
+    <input name='koe' th:text="${koe}"  cols='40' rows='5'/>
+    <button type='submit'>投稿する</button>
+</form>
+</body>
+</html>
+
+<!--th:action="@{id(id=${studentId})}"-->
