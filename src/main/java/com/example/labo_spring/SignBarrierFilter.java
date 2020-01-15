@@ -26,7 +26,7 @@ public class SignBarrierFilter implements Filter {
         var userId=httpSession.getAttribute("userId");
         System.out.println(httpSession.getId()+"のuserId:"+userId);
 
-        if(!path.endsWith("toukouuu")){
+        if(!path.endsWith("toukou")){
             filterChain.doFilter(servletRequest,servletResponse);
             return;
         }

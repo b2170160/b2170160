@@ -21,7 +21,7 @@ public class RetrospectRepository {
         return n;
     }
     public List<Retrospect> select(Retrospectuser retrospectuser){
-        var sql="select text,posted_at from comment  where user_id = ? order by posted_at desc";
+        var sql="select text,posted_at from comment  where user_id = ? order by posted_at asc ";
         return jdbc.query(sql,newInstance(Retrospect.class),retrospectuser.getUser_name());
     }
     }

@@ -16,6 +16,7 @@ public class LaboService {
     private LaboRepository repository;
 
     public Labo findById(String laboId) {
+
         return repository.findById(laboId);
     }
     public List<Labo> StudentAll(String laboId){

@@ -42,7 +42,16 @@ public class WebController {
 
 
     @GetMapping("SignIn")
-    public String signin(Model model) { return "signin"; }
+    public String signin(Model model) {
+
+        var userId = (String) httpSession.getAttribute("user_page");
+        var students = laboService.findname(userId);
+
+        model.addAttribute("Name",students.getName());
+
+        return "signin";
+
+    }
 
    @PostMapping("Signed")
    public String signed(Model model, String id, String pass) {
@@ -144,18 +153,24 @@ public class WebController {
         model.addAttribute("userName",userName);
         return "index";
     }
+
     @RequestMapping("/{laboId}")
     public String labo(Model model,@PathVariable("laboId") String laboId){
+
+
+        System.out.println("でっばくだよ:"+laboId);
+
         Labo labo = laboService.findById(laboId);
         model.addAttribute("laboname",labo.getLaboName());
         var students = laboService.StudentAll(laboId);
         model.addAttribute("laboId",laboId);
         model.addAttribute("students",students);
 
-        System.out.println(labo);
+        System.out.println(labo.getLaboName());
 
         return "laboview";
     }
+
     @RequestMapping(value="/students/id",method=RequestMethod.GET)
     public String studentget(Model model, @RequestParam("id") String student){
 

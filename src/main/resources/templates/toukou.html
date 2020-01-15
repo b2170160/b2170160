@@ -5,13 +5,11 @@
     <title>Title</title>
 </head>
 <body>
-
-
 <form action='kanryou'  method='post'>
     <p>詳細</p>
-    <input name='syousai' th:text="${syousai}" cols='40' rows='5'/>
+    <textarea name='syousai' th:text="${syousai}" th:wrap="hard" cols='40' rows='5'/>
     <p>学生の声</p>
-    <input name='koe' th:text="${koe}"  cols='40' rows='5'/>
+    <textarea name='koe' th:text="${koe}" th:wrap="hard" cols='40' rows='5'/>
     <button type='submit'>投稿する</button>
 </form>
 </body>

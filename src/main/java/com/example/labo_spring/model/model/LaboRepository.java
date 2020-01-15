@@ -18,7 +18,7 @@ public class LaboRepository {
     private JdbcTemplate jdbc;
 
     public Labo findById(String laboId){
-        var sql = "Select LaboId,LaboName from laboAbout where laboId = ? ;";
+        var sql = "Select LaboName from laboAbout where laboId = ? ;";
         return jdbc.queryForObject(sql,newInstance(Labo.class),laboId);
     }
     public List<Labo> selectStudent(String laboId){

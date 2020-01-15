@@ -25,13 +25,13 @@
                 </div>
                 <div class="rogo">
                     <p style="text-align: center;">詳細</p>
-                    <p>[[${syousai}]]</p>
+                    <h3><pre>[[${syousai}]]</pre></h3>
                 </div>
                 <div><h3>研究室の学生の声</h3></div>
 
                 <div class="example">
 
-                    <p>[[${koe}]]</p>
+                    <h3><pre>[[${koe}]]</pre></h3>
 
                 </div>
 
@@ -75,7 +75,7 @@
                         <!--ここに隠す中身-->
                         <p>
 
-                        <form action='yasusi' method='post'>
+                        <form action='yasusi' th:action="@{id(id=${studentId})}" method='post'>
                             <textarea name='text' cols='40' rows='5' th:text="'>>' + ${ri.count}"></textarea>
                             <button type='submit'>返信する</button>
                         </form>
