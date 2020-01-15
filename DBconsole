@@ -1,0 +1,73 @@
+create table comment(
+                      user_id varchar(32),
+                      text varchar(300) not null,
+                      posted_at timestamp not null
+);
+create table laboAbout(
+                        laboId varchar(16) not null primary key ,
+                        laboName varchar(32) not null ,
+                        laboClass varchar(32) not null ,
+                        about varchar(128),
+                        img varchar(64)
+);
+insert into laboAbout
+values ('okosi','大越研究室','A','高分子液晶を光学材料として利用する研究をしています。最新のテーマは液晶ディスプレイに使う超高効率の偏光板。事業化をめざして企業との共同研究も行っています。','course-teacher-okosi-thumb-105xauto-8.jpg'),
+       ('kawabe','川辺研究室','A','3次元ディスプレイのプラスチック材料とレーザ応用を研究。立体テレビや動画などもホログラフィでより自然な立体画像になります。国の支援事業にも採択されました。','course-teacher-kawabe-thumb-105xauto-10.jpg'),
+       ('karthaus','カートハウス研究室','A','花粉やクモの糸などの優れた自然材料と人工材料を組み合わせ、ナノサイズの新素材を創出。光学顕微鏡や電子顕微鏡などで観察・評価しながら研究を進めます。','course-teacher-karthaus-thumb-105xauto-9.jpg');
+insert into laboAbout
+values ('komatsugawa','小松川・山川研究室','C','ICTスペシャリストの育成、次世代アプリケーションの開発をテーマに、モバイル機器を活用したインテリジェントシステムを企業と共同研究しています。','course-teacher-komatsugawa-thumb-105xauto-159.jpg');
+insert into laboAbout
+values ('n-oda','小田研究室','B','二足歩行ロボットや、ロボット車椅子などの各種ロボットを研究し、人間生活支援に求められるロボットのモーション制御技術や人・環境のセンシング技術を深めます。','course-teacher-n-oda-thumb-105xauto-21.jpg');
+create table laboMember(
+                         laboId varchar(16) not null,
+                         studentId varchar(16) not null primary key,
+                         name varchar(32) not null
+);
+insert into laboMember
+values ('okosi','tanaka_tarou','田中 太郎'),
+       ('okosi','tanaka_jirou','田中 二郎'),
+       ('okosi','tanaka_saburou','田中 三郎'),
+       ('kawabe','satou hazime','佐藤 一'),
+       ('kawabe','satou minoru','佐藤 稔'),
+       ('komatsugawa','kudou yasuaki','工藤 泰明'),
+       ('komatsugawa','matuda kouki','松田 恒輝'),
+       ('karthaus','andou yasusi','安藤 靖'),
+       ('karthaus','andou ryoutu','安藤 両津'),
+       ('n-oda','nakazima taku','中島 卓'),
+       ('n-oda','nakazima sigeru','中島 茂');
+CREATE TABLE authen(
+                     user_id varchar(32) primary key ,
+                     passphrase varchar(32) not null,
+                     user_name varchar(32) not null,
+                     user_role varchar(32) not null
+);
+INSERT INTO authen
+values ( 't001','qwert','Hikari Chitose','teacher' ),
+       ( 's001','asdfg','Taro Naganuma','student');
+INSERT INTO authen
+values ('matuda kouki','zxcvb','Matuda Kouki','student');
+INSERT INTO authen
+values ('tanaka_tarou','01234','Tanaka Tarou','student');
+CREATE TABLE post(
+                   user_id varchar(32) primary key ,
+                   post varchar(1000) not null ,
+                   posted_at timestamp not null
+);
+create table setumei (
+                       user varchar(32),
+                       syousai varchar(256),
+                       koe varchar(2056)
+);
+INSERT into setumei
+values ('tanaka_tarou','サンプル','サンプル'),
+       ('tanaka_jirou','サンプル','サンプル'),
+       ('tanaka_saburou','サンプル','サンプル'),
+       ('satou hazime','サンプル','サンプル'),
+       ('satou minoru','サンプル','サンプル'),
+       ('kudou yasuaki','サンプル','サンプル'),
+       ('matuda kouki','サンプル','サンプル'),
+       ('andou yasusi','サンプル','サンプル'),
+       ('andou ryoutu','サンプル','サンプル'),
+       ('nakazima taku','サンプル','サンプル'),
+       ('nakazima sigeru','サンプル','サンプル');
+
